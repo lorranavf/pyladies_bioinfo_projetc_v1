@@ -1,4 +1,4 @@
-from alphabet import Alphabet, DNAAlphabet, RNAAlphabet, ProteinAlphabet, CustomAlphabet
+from .alphabet import Alphabet, DNAAlphabet, RNAAlphabet, ProteinAlphabet, CustomAlphabet
 
 class BaseSeq():
     """Class representing a biological sequence."""
@@ -6,14 +6,14 @@ class BaseSeq():
         self.sequence = sequence
         self.alphabet = alphabet
 
-    def wich_alphabet(self):
+    def which_alphabet(self):
         return self.alphabet.name
     
     def length(self):
         return len(self.sequence)
     
     def __str__(self):
-        return self.sequence
+        return f"{self.__class__.__name__}('{self.sequence}')"
     
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.sequence}')"
@@ -56,11 +56,11 @@ class CustomSeq(BaseSeq):
     def __init__(self, sequence: str, alphabet: CustomAlphabet):
         super().__init__(sequence, alphabet)
 
-class Seq:
+class SeqHandler():
     """Class that receives a str and attributes it with the corresponding type Seq."""
     def __new__(cls, sequence: str, alphabet: CustomAlphabet = None):
         
-        if cls is Seq:
+        if cls is SeqHandler:
             
             if all(base in DNAAlphabet().symbols for base in sequence):
                 return DNASeq(sequence)
@@ -81,11 +81,24 @@ class Seq:
 
 class SeqObj():
     """Class representing a sequence record with metadata."""
-    def __init__(self, seq: Seq, id: str = "", description: str = ""):
-        self.seq = seq
+    def __init__(self, sequence: BaseSeq, id: str = "", description: str = ""):
+        self.sequence = sequence
         self.id = id
         self.description = description
 
     def __repr__(self):
+        return f"SeqObj(id='{self.id}', description='{self.description}', seq={repr(self.sequence)})"
+    
+class SeqMultiObj():
+    """Class representing multiple sequence records."""
+    def __init__(self, sequences: list[SeqObj]):
+        self.sequences = sequences
 
-        return f"SeqObj(id='{self.id}', description='{self.description}', seq={repr(self.seq)})"
+    def __len__(self):
+        return len(self.sequences)
+    
+    def __getitem__(self, index):
+        return self.sequences[index]
+    
+    def __repr__(self):
+        return f"SeqMultiObj(sequences={repr(self.sequences)})"

@@ -4,60 +4,83 @@
 
 classDiagram
 
-class Alphabet{
-    +String name
-    +List symbols
-    +Dict dictionary
-}
-class DNAAlphabet{
-    +String name
-    +List symbols
-    +Dict dictionary
-}
-class RNAAlphabet{
-    +String name
-    +List symbols
-    +Dict dictionary
-}
-class PTNAlphabet{
-    +String name
-    +List symbols
-    +Dict dictionary
-}
+    class Alphabet{
+        String name
+        List symbols
+        Dict dictionary
+    }
+    class DNAAlphabet{}
+    class RNAAlphabet{}
+    class PTNAlphabet{}
+    class CustomAlphabet{}
 
-class BaseSeq{
-    +String sequence
-    +Alphabet alphabet
-    +wich_alphabet()
-}
+    class BaseSeq{
+        String sequence
+        Alphabet Alphabet
+        which_alphabet()
+        length()
+    }
+    class DNASeq{
+        gc_content()
+        transcribe()
+    }
+    class RNASeq{
+        gc_content()
+        translate()
+    }
+    class PTNSeq{
+        molecular_weight()
+    }
+    class CustomSeq{}
 
-class DNASeq{}
-class RNASeq{}
-class PTNSeq{}
-class CustomSeq{}
+    class SeqHandler{
+        String sequence
+    }
 
-class Seq{}
-class SeqObj{}
+    class SeqObj{
+        BaseSeq sequence
+        String id
+        String description
+    }
+    class SeqMultiObj{
+        List[SeqObj] sequences
+    }
+    class FileHandler{
+        String path
+        String extension
+        read()
+        write()
+    }
+    class FileValidator{
+        String path
+        String extension
+        validate_path()
+        validate_extension()
+        read_file()
+        validate_content()
+        parse_file()
+        validate_file()
+    }
+    class FastaValidator{}
 
-class SeqFile{
-    +String path
-    +read()
-    +write()
-}
+    Alphabet <|-- DNAAlphabet
+    Alphabet <|-- RNAAlphabet
+    Alphabet <|-- PTNAlphabet
+    Alphabet <|-- CustomAlphabet
 
-Alphabet <|-- DNAAlphabet
-Alphabet <|-- RNAAlphabet
-Alphabet <|-- PTNAlphabet
-Alphabet <|-- CustomAlphabet
+    BaseSeq *-- Alphabet
+    BaseSeq <|-- DNASeq
+    BaseSeq <|-- RNASeq
+    BaseSeq <|-- PTNSeq
+    BaseSeq <|-- CustomSeq
 
-BaseSeq <|-- DNASeq
-BaseSeq <|-- RNASeq
-BaseSeq <|-- PTNSeq
-BaseSeq <|-- CustomSeq
+    FileValidator <|-- FastaValidator
 
-Seq |>-- BaseSeq
-Seq o-- SeqObj
-
-SeqObj >-- SeqFile
+    FileHandler --> FileValidator
+    FileHandler --> SeqMultiObj
+    SeqMultiObj --> SeqObj
+    SeqObj --> SeqHandler
+    SeqHandler --> BaseSeq
 
 ```
+

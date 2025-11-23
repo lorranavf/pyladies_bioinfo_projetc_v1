@@ -4,10 +4,10 @@
 
 # Schedule
 
-- Semana I : verificar qual padrão de projeto criacional se adequa à solução proposta
-- Semana II: implementar a solução proposta
-- Semana III: implementar testes 
-- Semana IV: revisar implementação
+- [x] Semana I : verificar qual padrão de projeto criacional se adequa à solução proposta
+- [x] Semana II: implementar a solução proposta
+- Semana III: implementar testes e inserir tratamentos de erros
+- Semana IV: revisar implementação e documentação
 
 # Modelagem 
 
