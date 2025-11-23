@@ -79,6 +79,7 @@ classDiagram
     FileHandler --> FileValidator
     FileHandler --> SeqMultiObj
     SeqMultiObj --> SeqObj
+    SeqMultiObj --> SeqHandler
     SeqObj --> SeqHandler
     SeqHandler --> BaseSeq
 
