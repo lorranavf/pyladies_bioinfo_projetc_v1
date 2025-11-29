@@ -5,6 +5,9 @@ class Alphabet():
         self.name = ""
         self.symbols = []
         self.dictionary = {}
+
+    def __repr__(self):
+        return f"Alphabet(name={self.name}, symbols={self.symbols})"
            
 class DNAAlphabet(Alphabet):
     """Alphabet for DNA sequences."""
