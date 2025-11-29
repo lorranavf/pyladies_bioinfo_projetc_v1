@@ -9,9 +9,13 @@ classDiagram
         List symbols
         Dict dictionary
     }
+
     class DNAAlphabet{}
+
     class RNAAlphabet{}
+
     class PTNAlphabet{}
+
     class CustomAlphabet{}
 
     class BaseSeq{
@@ -19,18 +23,18 @@ classDiagram
         Alphabet Alphabet
         which_alphabet()
         length()
-    }
-    class DNASeq{
         gc_content()
         transcribe()
-    }
-    class RNASeq{
-        gc_content()
         translate()
-    }
-    class PTNSeq{
         molecular_weight()
     }
+
+    class DNASeq{}
+
+    class RNASeq{}
+
+    class PTNSeq{}
+    
     class CustomSeq{}
 
     class SeqHandler{
@@ -42,15 +46,18 @@ classDiagram
         String id
         String description
     }
+
     class SeqMultiObj{
         List[SeqObj] sequences
     }
+
     class FileHandler{
         String path
         String extension
         read()
         write()
     }
+
     class FileValidator{
         String path
         String extension
@@ -61,6 +68,7 @@ classDiagram
         parse_file()
         validate_file()
     }
+
     class FastaValidator{}
 
     Alphabet <|-- DNAAlphabet
