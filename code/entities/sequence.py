@@ -7,7 +7,7 @@ class BaseSeq():
         self.alphabet = alphabet
 
     def which_alphabet(self):
-        return self.alphabet.name
+        return self.alphabet.__class__.__name__
     
     def length(self):
         return len(self.sequence)
