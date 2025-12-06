@@ -5,7 +5,9 @@ A Python package for manipulating biological sequences and handling FASTA file I
 ## Install
 
 ```bash
+git clone git@github.com:lorranavf/bioseq.git
 ```
+
 
 ## How to Use
 
