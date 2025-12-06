@@ -10,32 +10,28 @@ classDiagram
         Dict dictionary
     }
 
-    class DNAAlphabet{}
+    class DNAAlphabet{...}
 
-    class RNAAlphabet{}
+    class RNAAlphabet{...}
 
-    class PTNAlphabet{}
+    class PTNAlphabet{...}
 
-    class CustomAlphabet{}
+    class CustomAlphabet{...}
 
     class BaseSeq{
         String sequence
         Alphabet Alphabet
-        which_alphabet()
+        alphabet()
         length()
-        gc_content()
-        transcribe()
-        translate()
-        molecular_weight()
     }
 
-    class DNASeq{}
+    class DNASeq{...}
 
-    class RNASeq{}
+    class RNASeq{...}
 
-    class PTNSeq{}
+    class PTNSeq{...}
     
-    class CustomSeq{}
+    class CustomSeq{...}
 
     class SeqHandler{
         String sequence
@@ -69,7 +65,7 @@ classDiagram
         validate_file()
     }
 
-    class FastaValidator{}
+    class FastaValidator{...}
 
     Alphabet <|-- DNAAlphabet
     Alphabet <|-- RNAAlphabet

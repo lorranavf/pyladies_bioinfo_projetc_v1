@@ -1,17 +1,15 @@
 # Project's scope
 
-- permite a criação de um objeto `seq` genérico (DNA, RNA, PTN) via pacote podendo este ser integrado ao código do usuário.
+- Permite a criação de um objeto `seq` genérico (DNA, RNA, PTN) via pacote podendo este ser integrado ao código do usuário.
 
 # Schedule
 
 - [x] Semana I : verificar qual padrão de projeto criacional se adequa à solução proposta
 - [x] Semana II: implementar a solução proposta
-- Semana III: implementar testes e inserir tratamentos de erros
-- Semana IV: revisar implementação e documentação
+- [x] Semana III: implementar testes e inserir tratamentos de erros
+- [x] Semana IV: revisar implementação e documentação
 
 # Modelagem 
-
-**use case**
 
 ```python
 
